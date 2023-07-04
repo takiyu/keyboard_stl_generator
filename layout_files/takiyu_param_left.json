@@ -34,7 +34,7 @@
     "screw_pole_upper": true,
 
     "cable_hole": true,
-    "cable_x_offset": 60,
+    "cable_x_offset": 65,
     "cable_hole_no_extra": true,
     "cable_hole_width": 10,
     "cable_hole_height": 10,

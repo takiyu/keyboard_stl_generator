@@ -1,5 +1,4 @@
-
-
+import copy
 import math
 import logging
 import sys
@@ -356,6 +355,18 @@ class Keyboard():
 
         # Remove space for a cable to pass through the body
         top_assembly -= self.cable.get_cable_hole()
+
+        # Secondary hole
+        if self.parameters.cable_2_hole:
+            # Create a copy of parameters
+            parameters2 = copy.copy(self.parameters)
+            parameters2.cable_x_offset = self.parameters.cable_2_x_offset
+            parameters2.cable_hole_width = self.parameters.cable_2_hole_width
+            parameters2.cable_hole_height = self.parameters.cable_2_hole_height
+            parameters2.cable_hole_down_offset = self.parameters.cable_2_hole_down_offset
+            # Subtract secondary cable object
+            cable2 = Cable(parameters2)
+            top_assembly -= cable2.get_cable_hole()
 
         # Interesect objects with a test block to handle testing specific parts of a model
         if self.parameters.test_block == True:

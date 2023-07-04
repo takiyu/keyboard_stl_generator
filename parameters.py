@@ -18,49 +18,6 @@ class Parameters():
 
         self.parameter_dict = parameter_dict
 
-        # self.default_parameter_dict = {
-        #     'plate_supports': True,
-            
-        #     'x_build_size' : 200,
-        #     'y_build_size' : 200,
-
-        #     'switch_type': 'mx_openable',
-        #     'stabilizer_type': 'cherry',
-
-        #     'custom_shape': False, 
-        #     'custom_shape_points': None,
-        #     'custom_shape_path': None,
-
-        #     'kerf' : 0.00,
-
-        #     'top_margin' : 0,
-        #     'bottom_margin' : 0,
-        #     'left_margin' : 0,
-        #     'right_margin' : 0,
-        #     'case_height' : 10,
-        #     # 'plate_wall_thickness' : 2.0,
-        #     'case_wall_thickness' : 0.0,
-        #     'plate_thickness' : 1.111,
-        #     'plate_corner_radius' : 0,
-        #     'bottom_cover_thickness': 0,
-
-        #     'support_bar_height' : 3.0,
-        #     'support_bar_width' : 1.0,
-        #     'tilt': 0.0,
-
-        #     'simple_test': False,
-
-        #     'screw_count': 0,
-        #     'screw_diameter': 0,
-        #     'screw_edge_inset': 0,
-
-        #     'cable_hole': False,
-        #     'hole_width': 10,
-        #     'hole_height': 10,
-        #     'cable_hole_down_offset': 1
-        # }
-
-
         self.paramater_alternate_dict = {
             'plate_wall_thickness': 'case_wall_thickness'
         }
@@ -75,7 +32,7 @@ class Parameters():
         self.stabilizer_type = 'cherry_costar'
 
         # Custom Switch Cutout Attributes
-        self.custom_shape = False 
+        self.custom_shape = False
         self.custom_shape_points = None
         self.custom_shape_path = None
 
@@ -118,6 +75,12 @@ class Parameters():
         self.cable_hole_height = 10
         self.cable_hole_up_offset = 1
         self.cable_hole_down_offset = 1
+
+        self.cable_2_hole = False
+        self.cable_2_x_offset = 0
+        self.cable_2_hole_width = 3
+        self.cable_2_hole_height = 3
+        self.cable_2_hole_down_offset = 1
 
         self.custom_polygons = None
 
