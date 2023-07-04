@@ -346,7 +346,13 @@ class Body():
         except:
             return None
 
-        return cylinder(r = radius, h = self.case_height_extra_fill * 4, center = True)
+        if self.parameters.screw_pole_upper:
+            # takiyu
+            shift = self.case_height_extra_fill / 1.8
+            height = self.case_height_extra_fill / 2
+            return down(shift)(cylinder(r = radius, h = height))
+        else:
+            return cylinder(r = radius, h = self.case_height_extra_fill * 4, center = True)
 
 
     def screw_hole_body_support(self, direction = 'right', screw_name = ''):

@@ -98,7 +98,7 @@ class Parameters():
         self.simple_test = False
 
         self.screw_count = 4
-        self.screw_diameter = 4
+        self.screw_diameter = 4.3
         self.screw_edge_inset = 7
         self.screw_edge_x_inset = None
         self.screw_edge_y_inset = None
