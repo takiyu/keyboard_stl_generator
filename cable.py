@@ -97,7 +97,7 @@ class Cable():
             cube([self.inner_block_width, self.cable_holder_height, self.parameters.case_wall_thickness], center = True)
         )
 
-        # Remvoe the 
+        # Remvoe the hole
         holder -= self.holder_hole(include_slot = True)
 
         return holder
@@ -251,7 +251,7 @@ class Cable():
 
         if self.parameters.cable_hole == True:
             return up(self.parameters.case_height_base_removed - (self.parameters.cable_hole_height / 2) - self.parameters.plate_thickness - self.parameters.cable_hole_down_offset ) (
-                right(self.parameters.left_margin + (self.parameters.real_max_x / 2)) ( 
+                right(self.parameters.left_margin + (self.parameters.real_max_x / 2) + self.parameters.cable_x_offset) ( 
                     forward(self.parameters.bottom_margin + self.parameters.top_margin + self.parameters.real_max_y) ( 
                         cube([self.parameters.cable_hole_width, self.parameters.case_wall_thickness * 2, self.parameters.cable_hole_height], center = True) 
                     ) 

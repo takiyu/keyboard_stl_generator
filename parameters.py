@@ -111,6 +111,7 @@ class Parameters():
         self.custom_screw_hole_coordinates = None
 
         self.cable_hole = False
+        self.cable_x_offset = 0
         self.cable_hole_no_extra = False
         self.cable_diameter = 4
         self.cable_hole_width = 10
