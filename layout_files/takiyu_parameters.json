@@ -15,9 +15,9 @@
     "support_bar_height" : 5.0,
     "support_bar_width" : 6.0,
 
-    "top_margin" : 13,
-    "bottom_margin" : 8,
-    "left_margin" : 8,
+    "top_margin" : 12,
+    "bottom_margin" : 9,
+    "left_margin" : 9,
     "right_margin" : 8,
 
     "case_height" : 10,
@@ -33,19 +33,10 @@
     "screw_edge_inset": 7,
     "screw_pole_upper": true,
 
-    "cable_hole": false,
+    "cable_hole": true,
+    "cable_hole_no_extra": true,
     "cable_hole_width": 10,
     "cable_hole_height": 10,
     "cable_diameter": 3,
-    "cable_hole_down_offset": 5,
-
-    "custom_polygons": [
-        {
-            "type": "circle",
-            "d": 7.5,
-            "coordinates": [
-                [114.775, 113.1]
-            ]
-        }
-    ]
+    "cable_hole_down_offset": 10
 }

@@ -296,9 +296,10 @@ def main():
     # Generate a strain relief piece for the cable hole
     if parameters.cable_hole == True:
         cable = Cable(parameters)
-        solid_object_dict['global']['cable_holder_main'] = cable.holder_main()
-        solid_object_dict['global']['cable_holder_clamp'] = cable.holder_clamp()
-        solid_object_dict['global']['cable_holder_all'] = cable.holder_all()
+        if not parameters.cable_hole_no_extra:
+            solid_object_dict['global']['cable_holder_main'] = cable.holder_main()
+            solid_object_dict['global']['cable_holder_clamp'] = cable.holder_clamp()
+            solid_object_dict['global']['cable_holder_all'] = cable.holder_all()
 
     print(parameters)
     print('Case Height: %f, Case Width: %f\n' % (parameters.real_case_height, parameters.real_case_width))
