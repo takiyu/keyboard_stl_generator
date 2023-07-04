@@ -502,7 +502,6 @@ class Body():
         
 
     def screw_hole_objects(self, tap = False):
-        
 
         if len(self.screw_hole_info.keys()) == 0:
             self.generate_screw_holes_coordinates()

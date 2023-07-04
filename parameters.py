@@ -105,6 +105,8 @@ class Parameters():
         self.screw_hole_body_wall_width = 2
         self.screw_hole_body_support_x_factor = 4
 
+        self.screw_pole_upper = False  # takiyu
+
         self.custom_screw_hole_coordinates_origin = [0, 0]
         self.custom_screw_hole_coordinates = None
 

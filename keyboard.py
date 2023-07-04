@@ -255,10 +255,15 @@ class Keyboard():
         if self.parameters.screw_count > 0:
             screw_hole_collection, screw_hole_body_collection, screw_hole_body_scaled_collection = self.body.screw_hole_objects(tap = bottom)
 
+            if self.parameters.screw_pole_upper:
+                # takiyu
+                top_assembly += screw_hole_body_collection  # Add to top
+                screw_hole_body_scaled_collection = None
+            else:
+                bottom_assembly = screw_hole_body_collection  # Add to bottom
+
             # Remove screw holes from top top_assembly
             top_assembly -= screw_hole_collection
-
-            bottom_assembly = screw_hole_body_collection
             bottom_assembly -= screw_hole_collection
 
         body_block = self.body.case(body_block_only = True)
@@ -312,6 +317,7 @@ class Keyboard():
                     )
                 )
             )
+        if screw_hole_body_scaled_collection is not None:
             screw_hole_body_scaled_collection = up(self.parameters.case_height_base_removed - (self.parameters.plate_thickness / 2)) (
                 forward(self.parameters.real_max_y + self.parameters.bottom_margin) (
                     right(self.parameters.left_margin) (
@@ -373,7 +379,8 @@ class Keyboard():
             bottom_assembly *= test_block
             screw_hole_collection *= test_block
             screw_hole_body_collection *= test_block
-            screw_hole_body_scaled_collection *= test_block
+            if screw_hole_body_scaled_collection is not None:
+                screw_hole_body_scaled_collection *= test_block
             body_block *= test_block
 
         # Remove thw custom cutouts before tilting
@@ -386,7 +393,8 @@ class Keyboard():
             if screw_hole_collection is not None:
                 screw_hole_collection = rotate(self.parameters.tilt, [1, 0, 0]) ( screw_hole_collection )
                 screw_hole_body_collection = rotate(self.parameters.tilt, [1, 0, 0]) ( screw_hole_body_collection )
-                screw_hole_body_scaled_collection = rotate(self.parameters.tilt, [1, 0, 0]) ( screw_hole_body_scaled_collection )
+                if screw_hole_body_scaled_collection is not None:
+                    screw_hole_body_scaled_collection = rotate(self.parameters.tilt, [1, 0, 0]) ( screw_hole_body_scaled_collection )
             body_block = rotate(self.parameters.tilt, [1, 0, 0]) ( body_block )
 
         # Remove bottom block to make bottom of case flat
