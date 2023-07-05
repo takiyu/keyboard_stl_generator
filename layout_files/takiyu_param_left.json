@@ -2,7 +2,7 @@
     "x_build_size" : 200,
     "y_build_size" : 200,
 
-    "kerf" : 0.05,
+    "kerf" : 0.2,
 
     "switch_type": "mx_openable",
     "stabilizer_type": "cherry_costar",
@@ -36,8 +36,8 @@
     "cable_hole": true,
     "cable_x_offset": 65,
     "cable_hole_no_extra": true,
-    "cable_hole_width": 10,
-    "cable_hole_height": 10,
+    "cable_hole_width": 11,
+    "cable_hole_height": 11,
     "cable_diameter": 3,
     "cable_hole_down_offset": 10
 }
