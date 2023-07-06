@@ -64,6 +64,9 @@ class Parameters():
 
         self.screw_pole_upper = False  # takiyu
 
+        self.extra_screw_hole_coordinates_origin = [0, 0]
+        self.extra_screw_hole_coordinates = None
+
         self.custom_screw_hole_coordinates_origin = [0, 0]
         self.custom_screw_hole_coordinates = None
 

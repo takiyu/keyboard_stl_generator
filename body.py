@@ -348,7 +348,7 @@ class Body():
 
         if self.parameters.screw_pole_upper:
             # takiyu
-            shift = self.case_height_extra_fill / 1.8
+            shift = self.case_height_extra_fill / 2 + self.parameters.support_bar_height + self.parameters.plate_thickness
             height = self.case_height_extra_fill / 2
             return down(shift)(cylinder(r = radius, h = height))
         else:
@@ -424,7 +424,6 @@ class Body():
         x_screw_count = 0
         y_screw_count = 0
 
-
         if self.parameters.custom_screw_hole_coordinates is None:
             # Bottom Left
             self.screw_hole_coordinates.append([0, 0])
@@ -474,7 +473,6 @@ class Body():
             #     self.logger.debug(coord)
 
         elif self.parameters.custom_screw_hole_coordinates is not None:
-
             custom_origin = [0, 0]
             if self.parameters.custom_screw_hole_coordinates_origin is not None:
                 custom_origin = self.parameters.custom_screw_hole_coordinates_origin
@@ -486,13 +484,30 @@ class Body():
                     custom_coords_adjusted.append(custom_coords[2])
 
                 self.screw_hole_coordinates.append(custom_coords_adjusted)
-        
+
+
+        if self.parameters.extra_screw_hole_coordinates is not None:
+            # Extra holes
+            extra_origin = [0, 0]
+            if self.parameters.extra_screw_hole_coordinates_origin is not None:
+                extra_origin = self.parameters.extra_screw_hole_coordinates_origin
+            for extra_coords in self.parameters.extra_screw_hole_coordinates:
+                extra_coords_adjusted = [abs(extra_coords[0] - extra_origin[0]), abs(extra_coords[1] - extra_origin[1])]
+                extra_coords_adjusted.append('is_extra')
+                self.screw_hole_coordinates.append(extra_coords_adjusted)
+
+
         for coords in self.screw_hole_coordinates:
             coords_string = str(coords[0]) + ',' + str(coords[1])
             # coords_string = ','.join(coords)
             custom_support_direction = None
+            is_extra = False
             if len(coords) == 3:
-                custom_support_direction = coords[2]
+                if coords[2] == 'is_extra':
+                    is_extra = True
+                    custom_support_direction = 'h'
+                else:
+                    custom_support_direction = coords[2]
             self.screw_hole_info[coords_string] = {
                 'coordinates': [coords[0], coords[1]],
                 'x': coords[0] + self.screw_edge_x_inset,
@@ -503,7 +518,8 @@ class Body():
                     'forward': False,
                     'back': False
                 },
-                'custom_support_direction': custom_support_direction
+                'custom_support_direction': custom_support_direction,
+                'is_extra': is_extra
             }
         
 
@@ -586,6 +602,11 @@ class Body():
             #     left_support = True
 
             hole_body = self.screw_hole_body(right_support = right_support, left_support = left_support, forward_support = forward_support, back_support = back_support, screw_name = coord_string)
+
+            # Move extra hole lower (takiyu)
+            if self.screw_hole_info[coord_string]['is_extra']:
+                hole_body = down(self.parameters.support_bar_height)(hole_body)
+
             scaled_hole_body = scale([1.1, 1.1, 1.0]) (hole_body)
 
             hole_body = right(x) (
