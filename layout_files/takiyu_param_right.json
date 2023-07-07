@@ -21,7 +21,7 @@
     "right_margin" : 8,
 
     "case_height" : 10,
-    "case_wall_thickness" : 3.0,
+    "case_wall_thickness" : 5.0,
     "plate_thickness" : 1.111,
     "plate_corner_radius" : 4,
     "bottom_cover_thickness": 2,
